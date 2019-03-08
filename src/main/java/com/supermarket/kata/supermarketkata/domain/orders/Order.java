@@ -1,6 +1,6 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
-import com.supermarket.kata.supermarketkata.domain.billing.OrderBillingStrategy;
+import com.supermarket.kata.supermarketkata.domain.billing.OrderPricingStrategy;
 import lombok.Getter;
 
 import java.util.List;
@@ -10,5 +10,5 @@ public class Order {
 
     private String id;
     private List<OrderItem> orderedItems;
-    private List<OrderBillingStrategy> billingStrategies;
+    private List<OrderPricingStrategy> billingStrategies;
 }

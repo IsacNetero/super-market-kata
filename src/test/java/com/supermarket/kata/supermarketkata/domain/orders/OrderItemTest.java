@@ -1,10 +1,8 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.supermarket.kata.supermarketkata.domain.billing.ProductBillingStrategy;
-import com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies.ThreeForOneProductBillingStrategy;
+import com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies.ThreeForOneProductPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
-import com.supermarket.kata.supermarketkata.domain.products.ProductBillingType;
+import com.supermarket.kata.supermarketkata.domain.products.ProductPricingType;
 import org.junit.jupiter.api.*;
 
 @DisplayName("Given an Ordered product")
@@ -20,7 +18,7 @@ class OrderItemTest {
         @BeforeEach
         void setup() {
 
-            this.product = new Product("product-mock", 1.5f, ProductBillingType.UNIT);
+            this.product = new Product("product-mock", 1.5f, ProductPricingType.UNIT);
         }
         @Test
         @DisplayName("Then a NegativeAmountException should be thrown")
@@ -45,7 +43,7 @@ class OrderItemTest {
         @BeforeEach
         void setup() {
 
-            drink = new Product("drink", 1.5f, ProductBillingType.UNIT);
+            drink = new Product("drink", 1.5f, ProductPricingType.UNIT);
         }
         @Test
         @DisplayName("Then an IncompatibleUnitException should be thrown")
@@ -65,7 +63,7 @@ class OrderItemTest {
         @BeforeEach
         void setup() {
 
-            cocaCola = new Product("Coca-Cola", 1.5f, ProductBillingType.UNIT);
+            cocaCola = new Product("Coca-Cola", 1.5f, ProductPricingType.UNIT);
         }
         @Test
         @DisplayName("Then the default BasicPricingStrategy should be used")
@@ -91,15 +89,15 @@ class OrderItemTest {
         @BeforeEach
         void setup() {
 
-            coffee = new Product("Coffee", 0.5f, ProductBillingType.WEIGHT);
+            coffee = new Product("Coffee", 0.5f, ProductPricingType.WEIGHT);
 
-            coffee.addBillingStrategy(new ThreeForOneProductBillingStrategy());
+            coffee.addPricingStrategy(new ThreeForOneProductPricingStrategy());
 
             /*
              * Custom runtime pricing strategy
              * If we buy 2 units the third is free
              * */
-            coffee.addBillingStrategy((product, amount)->{
+            coffee.addPricingStrategy((product, amount)->{
 
                 int numberOfThrees = amount.intValue()/3;
 

@@ -1,7 +1,7 @@
 package com.supermarket.kata.supermarketkata.domain.products;
 
-import com.supermarket.kata.supermarketkata.domain.billing.ProductBillingStrategy;
-import com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies.BasicProductBillingStrategy;
+import com.supermarket.kata.supermarketkata.domain.billing.ProductPricingStrategy;
+import com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies.BasicProductPricingStrategy;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -14,19 +14,19 @@ public class Product {
     private String id;
     private String name;
     private float unitPrice;
-    private ProductBillingType billingType;
-    private List<ProductBillingStrategy> billingStrategies;
+    private ProductPricingType pricingType;
+    private List<ProductPricingStrategy> pricingStrategies;
 
-    public Product(String name, float unitPrice, ProductBillingType billingType){
+    public Product(String name, float unitPrice, ProductPricingType billingType){
 
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.unitPrice = unitPrice;
-        this.billingType = billingType;
-        this.billingStrategies = new ArrayList<>();
-        this.billingStrategies.add(new BasicProductBillingStrategy());
+        this.pricingType = billingType;
+        this.pricingStrategies = new ArrayList<>();
+        this.pricingStrategies.add(new BasicProductPricingStrategy());
     }
-    public void addBillingStrategy(ProductBillingStrategy billingStrategy){
-        this.billingStrategies.add(billingStrategy);
+    public void addPricingStrategy(ProductPricingStrategy billingStrategy){
+        this.pricingStrategies.add(billingStrategy);
     }
 }

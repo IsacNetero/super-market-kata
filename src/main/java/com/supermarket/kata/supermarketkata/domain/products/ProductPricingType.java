@@ -1,6 +1,6 @@
 package com.supermarket.kata.supermarketkata.domain.products;
 
-public enum ProductBillingType {
+public enum ProductPricingType {
     UNIT,
     WEIGHT
 }
