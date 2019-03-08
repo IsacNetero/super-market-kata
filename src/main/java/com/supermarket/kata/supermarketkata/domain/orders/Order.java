@@ -1,6 +1,7 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
 import com.supermarket.kata.supermarketkata.domain.pricing.OrderPricingStrategy;
+import com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies.BasicOrderPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import lombok.Getter;
 
@@ -20,6 +21,7 @@ public class Order {
         this.id = java.util.UUID.randomUUID().toString();
         this.orderedItems = new ArrayList<>();
         this.pricingStrategies = new ArrayList<>();
+        this.pricingStrategies.add(new BasicOrderPricingStrategy());
     }
 
     public void addItem(Product product, float quantity) throws Exception {
@@ -28,5 +30,9 @@ public class Order {
 
     public void addPricingStrategy(OrderPricingStrategy pricingStrategy) {
         this.pricingStrategies.add(pricingStrategy);
+    }
+
+    public float orderPrice(){
+        return 0;
     }
 }
