@@ -31,7 +31,7 @@ class OrderTest {
     @Test
     void shouldUseBasicOrderPricingStrategyIfNoStrategyIsSpecified() {
 
-        Assertions.assertEquals(104f, order.orderPrice());
+        Assertions.assertEquals(94f, order.orderPrice());
 
     }
 

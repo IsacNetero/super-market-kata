@@ -44,7 +44,12 @@ public class Order {
     * - The price returned by the pricing strategy on the order level
     * */
     public float orderPrice(){
-        return 0;
+
+        return pricingStrategies.stream()
+                .map(strategy -> strategy.apply(this))
+                .sorted()
+                .findFirst()
+                .orElse(Float.NaN);
     }
 
 }
