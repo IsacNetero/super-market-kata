@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter @Setter
 public class ProductTrail {
 
-    private String productId;
-    private String productUnitPrice;
     private String usedPricingStrategyId;
+    private String productId;
+    private float productUnitPrice;
 
 }

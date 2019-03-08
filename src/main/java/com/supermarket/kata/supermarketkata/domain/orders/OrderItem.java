@@ -1,5 +1,6 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
+import com.supermarket.kata.supermarketkata.domain.pricing.ProductPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import com.supermarket.kata.supermarketkata.domain.products.ProductPricingType;
 import com.supermarket.kata.supermarketkata.domain.trail.ProductTrail;
@@ -21,28 +22,37 @@ public class OrderItem {
         this.validate();
     }
 
-    public void validate() throws NegativeAmountException, IncompatibleUnitException{
-        if(amount < 0){
-            throw  new NegativeAmountException(amount);
+    public void validate() throws NegativeAmountException, IncompatibleUnitException {
+        if (amount < 0) {
+            throw new NegativeAmountException(amount);
 
             //If we sell by unit we can't have an amount containing decimals
-        }else if(product.getPricingType()== ProductPricingType.UNIT && (Math.ceil(amount) != Math.floor(amount))){
+        } else if (product.getPricingType() == ProductPricingType.UNIT && (Math.ceil(amount) != Math.floor(amount))) {
             throw new IncompatibleUnitException(product.getPricingType(), amount);
 
         }
     }
-    /*
-    * Applies all the strategies related to a product and return the minimum value
-    * */
-    public float price(){
 
-        Optional<Float> minimalCostFromProductStrategies = this.getProduct().getPricingStrategies()
+    /*
+     * Applies all the strategies related to a product and return the minimum value
+     * */
+    public float price() {
+
+        float[] optimalPrice = {Float.NaN};
+
+        Optional<ProductPricingStrategy> optimalPricingStrategy = this.getProduct().getPricingStrategies()
                 .stream()
-                .map(strategy -> strategy.apply(product, amount))
-                .sorted()
+                .sorted((s1, s2) -> (int) Math.ceil(s1.apply(product, amount) - s2.apply(product, amount)))
                 .findFirst();
 
-        return minimalCostFromProductStrategies.orElse(Float.NaN);
+        optimalPricingStrategy.ifPresent(strategy -> {
+
+            optimalPrice[0] = strategy.apply(product, amount);
+            productTrail.setProductId(product.getId());
+            productTrail.setProductUnitPrice(product.getUnitPrice());
+            productTrail.setUsedPricingStrategyId(strategy.getStrategyId());
+        });
+        return optimalPrice[0];
     }
 }
 
