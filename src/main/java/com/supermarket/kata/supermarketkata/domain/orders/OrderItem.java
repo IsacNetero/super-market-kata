@@ -2,6 +2,7 @@ package com.supermarket.kata.supermarketkata.domain.orders;
 
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import com.supermarket.kata.supermarketkata.domain.products.ProductPricingType;
+import com.supermarket.kata.supermarketkata.domain.trail.ProductTrail;
 import lombok.Getter;
 
 import java.util.Optional;
@@ -11,10 +12,12 @@ public class OrderItem {
 
     private Product product;
     private float amount;
+    private ProductTrail productTrail;
 
     public OrderItem(Product product, float amount) throws IncompatibleUnitException, NegativeAmountException {
         this.product = product;
         this.amount = amount;
+        this.productTrail = new ProductTrail();
         this.validate();
     }
 

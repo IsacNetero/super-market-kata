@@ -6,4 +6,8 @@ import com.supermarket.kata.supermarketkata.domain.orders.Order;
 public interface OrderPricingStrategy {
 
     float apply(Order order);
+
+    default String getStrategyId() {
+        return this.getClass().getName();
+    }
 }

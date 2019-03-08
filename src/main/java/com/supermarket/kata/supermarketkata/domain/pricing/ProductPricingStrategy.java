@@ -7,4 +7,8 @@ public interface ProductPricingStrategy {
 
     float apply(Product product, Float amount);
 
+    default String getStrategyId() {
+
+        return this.getClass().getName();
+    }
 }
