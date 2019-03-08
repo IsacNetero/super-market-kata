@@ -10,9 +10,9 @@ public class OrderItem {
     private Product product;
     private float amount;
 
-    public OrderItem(Product product, float quantity) throws IncompatibleUnitException, NegativeAmountException {
+    public OrderItem(Product product, float amount) throws IncompatibleUnitException, NegativeAmountException {
         this.product = product;
-        this.amount = quantity;
+        this.amount = amount;
         this.validate();
     }
 
