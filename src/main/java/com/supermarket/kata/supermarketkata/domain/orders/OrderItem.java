@@ -18,11 +18,11 @@ public class OrderItem {
 
     public void validate() throws NegativeAmountException, IncompatibleUnitException{
         if(amount < 0){
-            throw  new NegativeAmountException();
+            throw  new NegativeAmountException(amount);
 
             //If we sell by unit we can't have an amount containing decimals
         }else if(product.getBillingType()== ProductBillingType.UNIT && (Math.ceil(amount) != Math.floor(amount))){
-            throw new IncompatibleUnitException();
+            throw new IncompatibleUnitException(product.getBillingType(), amount);
 
         }
     }
