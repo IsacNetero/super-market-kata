@@ -4,6 +4,8 @@ import com.supermarket.kata.supermarketkata.domain.products.Product;
 import com.supermarket.kata.supermarketkata.domain.products.ProductBillingType;
 import lombok.Getter;
 
+import java.util.Optional;
+
 @Getter
 public class OrderItem {
 
@@ -27,7 +29,14 @@ public class OrderItem {
         }
     }
     public float price(){
-        return -1;
+
+        Optional<Float> minimalCostFromProductStrategies = this.getProduct().getBillingStrategies()
+                .stream()
+                .map(strategy -> strategy.apply(product, amount))
+                .sorted()
+                .findFirst();
+
+        return minimalCostFromProductStrategies.orElse(Float.NaN);
     }
 }
 

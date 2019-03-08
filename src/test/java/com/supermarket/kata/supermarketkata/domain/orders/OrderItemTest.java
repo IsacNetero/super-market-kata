@@ -27,7 +27,7 @@ class OrderItemTest {
         void shouldThrowNegativeAmountException(){
             Assertions.assertThrows(NegativeAmountException.class, ()->{
 
-                OrderItem orderItem = new OrderItem(this.product, -5);
+                OrderItem orderItem = new OrderItem(this.product, -5f);
             });
         }
     }
@@ -72,8 +72,8 @@ class OrderItemTest {
         void shouldReturn3WhenUnitPriceIs1_5AndAmountIs2(){
 
             try {
-                OrderItem orderItem = new OrderItem(cocaCola, 2);
-                Assertions.assertEquals(orderItem.price(), 3);
+                OrderItem orderItem = new OrderItem(cocaCola, 2f);
+                Assertions.assertEquals(orderItem.price(), 3f);
 
             } catch (Exception e) {
 
@@ -112,8 +112,8 @@ class OrderItemTest {
         void shouldReturn2_5WhenUnitPriceIs0_5AndAmountIs11(){
 
             try {
-                OrderItem orderItem = new OrderItem(coffee, 11);
-                Assertions.assertEquals(orderItem.price(), 3);
+                OrderItem orderItem = new OrderItem(coffee, 11f);
+                Assertions.assertEquals(orderItem.price(), 2.5f);
 
             } catch (Exception e) {
 
