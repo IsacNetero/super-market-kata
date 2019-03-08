@@ -1,7 +1,9 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
+import com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies.BasicProductPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import com.supermarket.kata.supermarketkata.domain.products.ProductPricingType;
+import com.supermarket.kata.supermarketkata.domain.trail.OrderTrail;
 import org.junit.jupiter.api.*;
 
 
@@ -61,5 +63,12 @@ class OrderTest {
         });
         Assertions.assertEquals(47f, order.orderPrice());
 
+    }
+    @Test
+    void shouldSaveTrailInfo() {
+
+        order.orderPrice();
+        OrderTrail orderTrail = order.getOrderTrail();
+        Assertions.assertEquals(BasicProductPricingStrategy.class.getCanonicalName(), orderTrail.getUsedPricingStrategyId());
     }
 }

@@ -3,6 +3,7 @@ package com.supermarket.kata.supermarketkata.domain.orders;
 import com.supermarket.kata.supermarketkata.domain.pricing.OrderPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies.BasicOrderPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
+import com.supermarket.kata.supermarketkata.domain.trail.OrderTrail;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Order {
     private String id;
     private List<OrderItem> orderedItems;
     private List<OrderPricingStrategy> pricingStrategies;
-
+    private OrderTrail orderTrail;
 
     public Order(){
 
@@ -28,6 +29,7 @@ public class Order {
         this.orderedItems = new ArrayList<>();
         this.pricingStrategies = new ArrayList<>();
         this.pricingStrategies.add(new BasicOrderPricingStrategy());
+        this.orderTrail = new OrderTrail();
     }
 
     public void addItem(Product product, float quantity) throws Exception {

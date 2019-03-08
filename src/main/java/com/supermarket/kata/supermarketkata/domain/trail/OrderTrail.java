@@ -7,5 +7,5 @@ import lombok.Setter;
 public class OrderTrail {
 
     private String orderId;
-    private String userPricingStrategyId;
+    private String usedPricingStrategyId;
 }
