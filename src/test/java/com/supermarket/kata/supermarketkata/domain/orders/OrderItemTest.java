@@ -71,7 +71,7 @@ class OrderItemTest {
 
             try {
                 OrderItem orderItem = new OrderItem(cocaCola, 2f);
-                Assertions.assertEquals(orderItem.price(), 3f);
+                Assertions.assertEquals(3f, orderItem.price());
 
             } catch (Exception e) {
 
@@ -111,7 +111,7 @@ class OrderItemTest {
 
             try {
                 OrderItem orderItem = new OrderItem(coffee, 11f);
-                Assertions.assertEquals(orderItem.price(), 2.5f);
+                Assertions.assertEquals(2.5f, orderItem.price());
 
             } catch (Exception e) {
 
