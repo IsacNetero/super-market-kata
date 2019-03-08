@@ -61,6 +61,5 @@ class OrderTest {
         });
         Assertions.assertEquals(47f, order.orderPrice());
 
-
     }
 }
