@@ -8,6 +8,8 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 /*
 * We have to levels of pricing strategies :
 * - The first is the product level where each product has its own pricing strategy that decides the
@@ -47,11 +49,18 @@ public class Order {
     * */
     public float orderPrice(){
 
-        return pricingStrategies.stream()
-                .map(strategy -> strategy.apply(this))
-                .sorted()
-                .findFirst()
-                .orElse(Float.NaN);
+        float[] optimalPrice = {Float.NaN};
+
+        Optional<OrderPricingStrategy> optimalPricingStrategy = pricingStrategies.stream()
+                .sorted((s1, s2) -> (int) Math.ceil(s1.apply(this) - s2.apply(this)))
+                .findFirst();
+
+        optimalPricingStrategy.ifPresent(strategy -> {
+
+            optimalPrice[0] = strategy.apply(this);
+            orderTrail.setUsedPricingStrategyId(strategy.getStrategyId());
+        });
+        return optimalPrice[0];
     }
 
 }

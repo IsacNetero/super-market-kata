@@ -1,5 +1,6 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
+import com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies.BasicOrderPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies.BasicProductPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import com.supermarket.kata.supermarketkata.domain.products.ProductPricingType;
@@ -69,6 +70,6 @@ class OrderTest {
 
         order.orderPrice();
         OrderTrail orderTrail = order.getOrderTrail();
-        Assertions.assertEquals(BasicProductPricingStrategy.class.getCanonicalName(), orderTrail.getUsedPricingStrategyId());
+        Assertions.assertEquals(BasicOrderPricingStrategy.class.getCanonicalName(), orderTrail.getUsedPricingStrategyId());
     }
 }
