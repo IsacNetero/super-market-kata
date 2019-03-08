@@ -6,6 +6,6 @@ import com.supermarket.kata.supermarketkata.domain.products.Product;
 public class BasicProductBillingStrategy implements ProductBillingStrategy {
     @Override
     public float apply(Product product, Float amount) {
-        return 0;
+        return product.getUnitPrice() * amount;
     }
 }
