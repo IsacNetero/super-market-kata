@@ -7,6 +7,8 @@ public class BasicOrderPricingStrategy implements OrderPricingStrategy {
 
     @Override
     public float apply(Order order) {
-        return 0;
+        float total = 0;
+        total = order.getOrderedItems().stream().map(item -> item.price()).reduce(total, (a,b)-> a+b);
+        return total;
     }
 }
