@@ -23,10 +23,8 @@ public class Product {
         this.unitPrice = unitPrice;
         this.billingType = billingType;
         this.billingStrategies = new ArrayList<>();
-
     }
     public void addBillingStrategy(ProductBillingStrategy billingStrategy){
         this.billingStrategies.add(billingStrategy);
     }
-
 }
