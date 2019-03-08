@@ -28,6 +28,9 @@ public class OrderItem {
 
         }
     }
+    /*
+    * Applies all the strategies related to a product and return the minimum value
+    * */
     public float price(){
 
         Optional<Float> minimalCostFromProductStrategies = this.getProduct().getPricingStrategies()
