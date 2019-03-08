@@ -54,7 +54,7 @@ class OrderItemTest {
             });
         }
     }
-    @DisplayName("If the ordered product has not pricing strategy")
+    @DisplayName("If the ordered product has no pricing strategy")
     @Nested
     class OrderedProductWithNoPricingStrategy{
 
