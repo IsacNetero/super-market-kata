@@ -1,6 +1,7 @@
 package com.supermarket.kata.supermarketkata.domain.products;
 
 import com.supermarket.kata.supermarketkata.domain.billing.ProductBillingStrategy;
+import com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies.BasicProductBillingStrategy;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class Product {
         this.unitPrice = unitPrice;
         this.billingType = billingType;
         this.billingStrategies = new ArrayList<>();
+        this.billingStrategies.add(new BasicProductBillingStrategy());
     }
     public void addBillingStrategy(ProductBillingStrategy billingStrategy){
         this.billingStrategies.add(billingStrategy);
