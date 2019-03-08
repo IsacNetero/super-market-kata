@@ -1,4 +1,4 @@
-package com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies;
+package com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies;
 
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import com.supermarket.kata.supermarketkata.domain.products.ProductPricingType;

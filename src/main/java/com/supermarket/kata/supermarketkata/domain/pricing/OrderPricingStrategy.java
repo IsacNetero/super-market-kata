@@ -1,4 +1,4 @@
-package com.supermarket.kata.supermarketkata.domain.billing;
+package com.supermarket.kata.supermarketkata.domain.pricing;
 
 import com.supermarket.kata.supermarketkata.domain.orders.Order;
 

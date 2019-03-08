@@ -1,6 +1,6 @@
-package com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies;
+package com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies;
 
-import com.supermarket.kata.supermarketkata.domain.billing.ProductPricingStrategy;
+import com.supermarket.kata.supermarketkata.domain.pricing.ProductPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 
 public class BasicProductPricingStrategy implements ProductPricingStrategy {

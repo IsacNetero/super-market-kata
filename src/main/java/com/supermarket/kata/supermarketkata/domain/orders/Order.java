@@ -1,6 +1,6 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
-import com.supermarket.kata.supermarketkata.domain.billing.OrderPricingStrategy;
+import com.supermarket.kata.supermarketkata.domain.pricing.OrderPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import lombok.Getter;
 

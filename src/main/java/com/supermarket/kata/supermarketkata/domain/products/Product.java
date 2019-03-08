@@ -1,7 +1,7 @@
 package com.supermarket.kata.supermarketkata.domain.products;
 
-import com.supermarket.kata.supermarketkata.domain.billing.ProductPricingStrategy;
-import com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies.BasicProductPricingStrategy;
+import com.supermarket.kata.supermarketkata.domain.pricing.ProductPricingStrategy;
+import com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies.BasicProductPricingStrategy;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -17,16 +17,16 @@ public class Product {
     private ProductPricingType pricingType;
     private List<ProductPricingStrategy> pricingStrategies;
 
-    public Product(String name, float unitPrice, ProductPricingType billingType){
+    public Product(String name, float unitPrice, ProductPricingType pricingType){
 
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.unitPrice = unitPrice;
-        this.pricingType = billingType;
+        this.pricingType = pricingType;
         this.pricingStrategies = new ArrayList<>();
         this.pricingStrategies.add(new BasicProductPricingStrategy());
     }
-    public void addPricingStrategy(ProductPricingStrategy billingStrategy){
-        this.pricingStrategies.add(billingStrategy);
+    public void addPricingStrategy(ProductPricingStrategy pricingStrategy){
+        this.pricingStrategies.add(pricingStrategy);
     }
 }

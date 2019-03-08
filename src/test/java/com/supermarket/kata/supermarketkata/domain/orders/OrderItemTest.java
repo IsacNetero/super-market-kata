@@ -1,6 +1,6 @@
 package com.supermarket.kata.supermarketkata.domain.orders;
 
-import com.supermarket.kata.supermarketkata.domain.billing.defaultStrategies.ThreeForOneProductPricingStrategy;
+import com.supermarket.kata.supermarketkata.domain.pricing.defaultStrategies.ThreeForOneProductPricingStrategy;
 import com.supermarket.kata.supermarketkata.domain.products.Product;
 import com.supermarket.kata.supermarketkata.domain.products.ProductPricingType;
 import org.junit.jupiter.api.*;
@@ -33,7 +33,7 @@ class OrderItemTest {
     /*
         Let's say for example that a person wants to buy a half can of coke
     * */
-    @DisplayName("If the amount specified is not compatible with the product billing type")
+    @DisplayName("If the amount specified is not compatible with the product pricing type")
     @Nested
     class OrderItemWithIncompatibleUnit{
 
