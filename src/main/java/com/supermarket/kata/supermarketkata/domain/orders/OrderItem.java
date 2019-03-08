@@ -26,5 +26,8 @@ public class OrderItem {
 
         }
     }
+    public float price(){
+        return -1;
+    }
 }
 
