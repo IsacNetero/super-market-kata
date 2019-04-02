@@ -14,7 +14,7 @@ public class OrderItem {
     private Product product;
     private float amount;
     private ProductTrail productTrail;
-
+    private float ration =12.5f;
     public OrderItem(Product product, float amount) throws IncompatibleUnitException, NegativeAmountException {
         this.product = product;
         this.amount = amount;

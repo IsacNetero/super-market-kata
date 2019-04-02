@@ -21,6 +21,7 @@ import java.util.Optional;
 public class Order {
 
     private String id;
+    private String orderName;
     private List<OrderItem> orderedItems;
     private List<OrderPricingStrategy> pricingStrategies;
     private OrderTrail orderTrail;
@@ -63,4 +64,35 @@ public class Order {
         return optimalPrice[0];
     }
 
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
+
+    public List<OrderItem> getOrderedItems() {
+        return orderedItems;
+    }
+
+    public void setOrderedItems(List<OrderItem> orderedItems) {
+        this.orderedItems = orderedItems;
+    }
+
+    public List<OrderPricingStrategy> getPricingStrategies() {
+        return pricingStrategies;
+    }
+
+    public void setPricingStrategies(List<OrderPricingStrategy> pricingStrategies) {
+        this.pricingStrategies = pricingStrategies;
+    }
+
+    public OrderTrail getOrderTrail() {
+        return orderTrail;
+    }
+
+    public void setOrderTrail(OrderTrail orderTrail) {
+        this.orderTrail = orderTrail;
+    }
 }
